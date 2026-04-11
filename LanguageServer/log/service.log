@@ -1,10 +1,10 @@
-[18:02:20.260][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:68]: Lua Lsp startup, root: 	C:/Users/Miika/Documents/Floppy Fish/LanguageServer
-[18:02:20.262][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:69]: ROOT:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer
-[18:02:20.262][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:70]: LOGPATH:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer/log
-[18:02:20.262][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:71]: METAPATH:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer/meta
-[18:02:20.285][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:72]: VERSION:	3.13.9
-[18:02:21.426][info] [#0:script\proto\proto.lua:260]: Listen Mode: stdio
-[18:02:21.426][info] [#0:script\service\service.lua:145]: 
+[23:38:54.919][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:68]: Lua Lsp startup, root: 	C:/Users/Miika/Documents/Floppy Fish/LanguageServer
+[23:38:54.921][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:69]: ROOT:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer
+[23:38:54.921][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:70]: LOGPATH:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer/log
+[23:38:54.921][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:71]: METAPATH:	C:/Users/Miika/Documents/Floppy Fish/LanguageServer/meta
+[23:38:54.921][info] [#0:C:/Users/Miika/Documents/Floppy Fish/LanguageServer\main.lua:72]: VERSION:	3.13.9
+[23:38:54.972][info] [#0:script\proto\proto.lua:260]: Listen Mode: stdio
+[23:38:54.972][info] [#0:script\service\service.lua:145]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
         Total: 2.256 MB
@@ -26,7 +26,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[18:02:21.820][info] [#0:script\client.lua:657]: Client init	{
+[23:38:55.207][info] [#0:script\client.lua:657]: Client init	{
   capabilities = {
     completionProvider = {
       resolveProvider = false,
@@ -39,94 +39,10 @@
     textDocumentSync = 1
   }
 }
-[18:02:21.821][info] [#0:script\language.lua:137]: VSC language: nil
-[18:02:21.821][info] [#0:script\language.lua:138]: LS  language: en-us
-[18:02:22.044][info] [#0:script\workspace\workspace.lua:48]: Workspace create: 	file:///
-[18:02:22.058][info] [#0:script\client.lua:112]: ShowMessage	Error	Your workspace is set to `\`. Lua language server refused to load this directory. Please check your configuration.[learn more here](https://luals.github.io/wiki/faq#why-is-the-server-scanning-the-wrong-folder)
-[18:02:22.287][info] [#0:script\library.lua:212]: Init builtin library at:	file:///
-[18:02:22.990][info] [#0:script\workspace\workspace.lua:324]: Preload start:	file:///
-[18:02:23.002][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/math.lua
-[18:02:23.002][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/table.lua
-[18:02:23.002][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/builtin.lua
-[18:02:23.003][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/basic.lua
-[18:02:23.003][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/debug.lua
-[18:02:23.004][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/string.lua
-[18:02:23.004][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
-[18:02:23.004][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/os.lua
-[18:02:23.005][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/package.lua
-[18:02:23.005][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/io.lua
-[18:02:23.006][info] [#0:script\workspace\workspace.lua:353]: Scan library at:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/utf8.lua
-[18:02:23.116][info] [#0:script\workspace\workspace.lua:379]: Found 11 files at:	file:///
-[18:02:23.116][info] [#0:script\workspace\loading.lua:160]: Load files from disk:	file:///
-[18:02:23.227][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/utf8.lua , size = 2.386 KB
-[18:02:23.228][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/utf8.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.230][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/utf8.lua
-[18:02:23.230][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/package.lua , size = 2.944 KB
-[18:02:23.230][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/package.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.231][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/package.lua
-[18:02:23.232][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/os.lua , size = 5.611 KB
-[18:02:23.232][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/os.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.237][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/os.lua
-[18:02:23.237][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/coroutine.lua , size = 2.590 KB
-[18:02:23.237][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.239][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/coroutine.lua
-[18:02:23.239][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/io.lua , size = 6.364 KB
-[18:02:23.239][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/io.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.243][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/io.lua
-[18:02:23.243][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/string.lua , size = 5.260 KB
-[18:02:23.243][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/string.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.249][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/string.lua
-[18:02:23.249][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/debug.lua , size = 7.637 KB
-[18:02:23.249][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/debug.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.254][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/debug.lua
-[18:02:23.254][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/builtin.lua , size = 0.302 KB
-[18:02:23.254][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/builtin.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.255][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/builtin.lua
-[18:02:23.255][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/basic.lua , size = 15.841 KB
-[18:02:23.255][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/basic.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.263][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/basic.lua
-[18:02:23.263][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/table.lua , size = 4.445 KB
-[18:02:23.268][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/table.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.271][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/table.lua
-[18:02:23.271][info] [#0:script\workspace\loading.lua:100]: Preload file at: file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/math.lua , size = 8.542 KB
-[18:02:23.271][error][#0:script\files.lua:691]: Client not ready!	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/math.lua
-stack traceback:
-	script\files.lua:691: in function 'files.compileState'
-	script\workspace\loading.lua:105: in function <script\workspace\loading.lua:80>
-[18:02:23.276][info] [#0:script\workspace\loading.lua:112]: ++++As library of:	file:///c%3A/Users/Miika/Documents/Floppy%20Fish/LanguageServer/meta/Lua%205.4%20en-us%20utf8/math.lua
-[18:02:23.387][info] [#0:script\workspace\loading.lua:172]: Loaded files takes [0.270] sec: file:///
-[18:02:23.387][info] [#0:script\workspace\loading.lua:181]: Compile files takes [0.001] sec: file:///
-[18:02:23.387][info] [#0:script\workspace\loading.lua:182]: Loaded finish:	file:///
-[18:02:23.387][info] [#0:script\workspace\workspace.lua:381]: Preload finish at:	file:///
-[18:02:23.499][info] [#0:script\provider\diagnostic.lua:560]: Diagnostics scope [file:///], files count:[11]
-[18:02:23.847][info] [#0:script\provider\diagnostic.lua:577]: Diagnostics scope [file:///] finished, takes [0.348] sec.
+[23:38:55.207][info] [#0:script\language.lua:137]: VSC language: nil
+[23:38:55.207][info] [#0:script\language.lua:138]: LS  language: en-us
+[23:38:55.430][info] [#0:script\workspace\workspace.lua:48]: Workspace create: 	file:///
+[23:38:55.431][info] [#0:script\client.lua:112]: ShowMessage	Error	Your workspace is set to `\`. Lua language server refused to load this directory. Please check your configuration.[learn more here](https://luals.github.io/wiki/faq#why-is-the-server-scanning-the-wrong-folder)
+[23:38:55.431][info] [#0:script\provider\provider.lua:176]: Server shutdown.
+[23:38:55.555][info] [#0:script\library.lua:212]: Init builtin library at:	file:///
+[23:38:55.635][warn] [#0:script\pub\report.lua:24]: Load proto error:	Disconnected!

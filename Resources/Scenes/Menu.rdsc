@@ -19,7 +19,13 @@
 
   "textures": {
     "default": "Textures/PixelText.png",
-    "modelface": "Textures/PixelText.png"
+    "fish": "Textures/fish.png",
+    "pipe": "Textures/pipe.png",
+    "background_layer_1": "Textures/background/layer_1.png",
+    "background_layer_2": "Textures/background/layer_2.png",
+    "background_layer_3": "Textures/background/layer_3.png",
+    "background_layer_4": "Textures/background/layer_4.png",
+    "background": "Textures/background.png"
   },
 
   "audio": {
@@ -31,43 +37,11 @@
 
   "gameObjects": [
     {
-      "name": "Player",
+      "name": "Game",
       "components": {
-        "transform": {
-          "translation": [2, 0, 0],
-          "scale": [1, 1, 1],
-          "rotation": [0, 0, 0]
-        },
-        "render": {
-          "shader": "default",
-          "texture": "default"
-        },
-        "audioListener": {
-          "translation": [0, 0, 0],
-          "rotation": [0, 0, 0]
-        },
-        "script" : "Scripts/test.lua"
-      }
-    },
-    {
-      "name": "Reyalp",
-      "components": {
-        "transform": {
-          "translation": [-2, 0, 0],
-          "scale": [1, 1, 1],
-          "rotation": [0, 0, 0]
-        },
-        "render": {
-          "shader": "reversedColors",
-          "texture": "modelface"
-        },        
-        "audioPlayer": {
-          "translation": [0, 0, 0],
-          "audio": "test"
-        }
+        "script" : "Scripts/broken.lua"
       }
     }
   ]
-
 }
 
