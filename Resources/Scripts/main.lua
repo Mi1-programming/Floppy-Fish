@@ -1,11 +1,14 @@
+local pooler = require("Resources.Scripts.pooler")
+
 local playerConfig = {
-    jumpPower = 25.0,
-    velocityLoss = 20.0,
-    gravity = 15.0,
-    velocityRotateAnimation = 3.0
+    jumpPower = 35.0,
+    velocityLoss = 25.0,
+    gravity = 25.0,
+    velocityRotateAnimation = 3.0,
+    hitBoxSize = 0.25
 }
-local pipeConfig = {gap = 10, speed = 3, xLoopBounds = 8, yRandomness = 2}
-local mapConfig = {yBounds = 5}
+local pipeConfig = {gap = 10, speed = 3, yRandomness = 2, startX = -8, lifeTime = 5.5, spawnTime = 2}
+local mapConfig = {yBounds = 6}
 local parallaxConfig = {
     backgroundWidth = 20.0,
     backgroundHeight = 10.0,
@@ -153,7 +156,7 @@ function MakePlayer()
         yPosition = 0.0,
         lastYPosition = 0.0,
         yVelocity = playerConfig.jumpPower,
-        collider = MakeBoxCollider(playerTransform, 0.0, 0.0, 0.35, 0.35)
+        collider = MakeBoxCollider(playerTransform, 0.0, 0.0, playerConfig.hitBoxSize, playerConfig.hitBoxSize)
     }
     return player
 end
@@ -196,39 +199,38 @@ function BuildPipe(name)
 
     return builtPipe
 end
-function BuildPipeColumn()
+function BuildPipeColumn(index)
+    local number = index
+    local bottomPipeName = "BottomPipe_" .. number
+    local bottomPipe = BuildPipe(bottomPipeName)
 
-    local bottomPipe = BuildPipe("BottomPipe")
-
-    local topPipe = BuildPipe("TopPipe")
+    local topPipeName = "TopPipe_" .. number
+    local topPipe = BuildPipe(topPipeName)
     topPipe.transform.rotation:setZ(180)
 
     local pipeColumn = {
         bottomPipe = bottomPipe,
         topPipe = topPipe,
-        positionX = -pipeConfig.xLoopBounds,
-        positionY = 0
+        positionX = 0,
+        positionY = 0,
+        lived = 0
     }
     return pipeColumn
 end
-function UpdatePipeColumn(pipeColumn, deltaTime)
-    pipeColumn.positionX = pipeColumn.positionX + pipeConfig.speed * deltaTime
-    if pipeColumn.positionX > pipeConfig.xLoopBounds then
-        pipeColumn.positionX = -pipeConfig.xLoopBounds
-        pipeColumn.positionY = (math.random() - 0.5) * 2.0 *
-                                   pipeConfig.yRandomness
+function UpdatePipeColumnInstance(instance, deltaTime)
+
+    local pipeColumn = instance.object
+    pipeColumn.lived = pipeColumn.lived + deltaTime
+    
+    local livedFullLife = pipeColumn.lived > pipeConfig.lifeTime
+    if livedFullLife then
+        pooler.Destroy(instance)
+        return
     end
-
-    -- Update the transforms
-
-    local gapCenter = pipeConfig.gap * 0.5
-
-    pipeColumn.bottomPipe.transform.position:set(pipeColumn.positionX,
-                                                 pipeColumn.positionY +
-                                                     gapCenter, 0)
-    pipeColumn.topPipe.transform.position:set(pipeColumn.positionX,
-                                              pipeColumn.positionY - gapCenter,
-                                              0)
+    
+    pipeColumn.positionX = pipeColumn.positionX + pipeConfig.speed * deltaTime
+    pipeColumn.bottomPipe.transform.position:setX(pipeColumn.positionX)
+    pipeColumn.topPipe.transform.position:setX(pipeColumn.positionX)
 end
 function PlayerHandlePipeColumnCollisions(player, pipeColumn)
     local topPipeCollision = HandleCollision(player.collider,
@@ -256,30 +258,80 @@ function PlayerIsOutOfBounds(player)
     return isOutOfBounds
 end
 
+local pipeSpawnWaited = pipeConfig.spawnTime
+
+local pipeColumnPool = pooler.Create(
+    BuildPipeColumn,
+    3,
+    function (instance)
+        local currentColumn = instance.object
+
+        if currentColumn == nil then return end
+
+        currentColumn.positionX = pipeConfig.startX
+        currentColumn.bottomPipe.transform.position:setX(pipeConfig.startX)
+        currentColumn.topPipe.transform.position:setX(pipeConfig.startX)
+        currentColumn.bottomPipe.transform.scale:setX(1)
+        currentColumn.topPipe.transform.scale:setX(1)
+        currentColumn.positionY = (math.random() - 0.5) * 2.0 * pipeConfig.yRandomness
+
+        local gapCenter = pipeConfig.gap * 0.5
+        currentColumn.bottomPipe.transform.position:setY(currentColumn.positionY + gapCenter)
+        currentColumn.topPipe.transform.position:setY(currentColumn.positionY - gapCenter)
+
+    end, 
+    function (instance)
+        local currentColumn = instance.object
+
+        currentColumn.bottomPipe.transform.scale:setX(0)
+        currentColumn.topPipe.transform.scale:setX(0)
+        currentColumn.lived = 0.0
+    end
+)
+
 local player = MakePlayer()
-local pipeColumn = BuildPipeColumn()
 local parallax = BuildParallax(parallaxConfig.backgrounds)
 
+function Reset()
+    pooler.Clear(pipeColumnPool)
+    ResetPlayer(player)
+    ResetParallax(parallax)
+    pipeSpawnWaited = pipeConfig.spawnTime
+end
 function update(time)
     local deltaTime = time - lastTime
+    pipeSpawnWaited = pipeSpawnWaited + deltaTime
+
+    if pipeSpawnWaited > pipeConfig.spawnTime then
+        pipeSpawnWaited = 0.0
+        pooler.Spawn(pipeColumnPool)
+    end
+
+    if pipeColumnPool ~= nil then
+        for _, instance in pairs(pipeColumnPool.usedInstances) do
+
+            UpdatePipeColumnInstance(instance, deltaTime)
+
+            local currentColumn = instance.object
+            local hadCollision = PlayerHandlePipeColumnCollisions(player, currentColumn)
+
+            if hadCollision then
+                Reset()
+                return
+            end
+        end
+    end
 
     UpdateParallax(parallax, deltaTime)
     UpdatePlayer(player, deltaTime)
-    UpdatePipeColumn(pipeColumn, deltaTime)
 
-    local hadCollision = PlayerHandlePipeColumnCollisions(player, pipeColumn)
     local isOutOfBounds = PlayerIsOutOfBounds(player)
-    local hasLost = hadCollision or isOutOfBounds
-    if hasLost then
-        ResetPlayer(player)
-        ResetPipeColumn(pipeColumn)
-        ResetParallax(parallax)
-        print("Lose!")
+    if isOutOfBounds then
+        Reset()
+        return
     end
     if Input:keyPressed("R") then
-        ResetPlayer(player)
-        ResetPipeColumn(pipeColumn)
-        ResetParallax(parallax)
+        Reset()
         return
     end
 
