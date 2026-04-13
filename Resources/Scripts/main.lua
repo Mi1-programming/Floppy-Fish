@@ -2,17 +2,10 @@ local playerConfig = {
     jumpPower = 25.0,
     velocityLoss = 20.0,
     gravity = 15.0,
-    velocityRotateAnimation = 120.0
+    velocityRotateAnimation = 3.0
 }
-local pipeConfig = {
-    gap = 10,
-    speed = 3,
-    xLoopBounds = 8,
-    yRandomness = 2
-}
-local mapConfig = {
-    yBounds = 5
-}
+local pipeConfig = {gap = 10, speed = 3, xLoopBounds = 8, yRandomness = 2}
+local mapConfig = {yBounds = 5}
 local parallaxConfig = {
     backgroundWidth = 20.0,
     backgroundHeight = 10.0,
@@ -22,20 +15,17 @@ local parallaxConfig = {
             sprite = "background_layer_1",
             scrollSpeed = -0.0025,
             positionZ = 6
-        },
-        {
+        }, {
             name = "Background_layer_2",
             sprite = "background_layer_2",
             scrollSpeed = -0.05,
             positionZ = 5
-        },
-        {
+        }, {
             name = "Background_layer_3",
             sprite = "background_layer_3",
             scrollSpeed = -0.1,
             positionZ = 4
-        },
-        {
+        }, {
             name = "aaaaa", -- PLEASE DON'T CHANGE THIS. THINGS WILL BREAK IF IT SAYS ANYTHING ELSE
             sprite = "background_layer_4",
             scrollSpeed = -0.35,
@@ -51,7 +41,7 @@ function MakeBoxCollider(parent, offsetX, offsetY, width, height)
         offsetX = offsetX,
         offsetY = offsetY,
         width = width,
-        height = height,
+        height = height
     }
     return collider
 end
@@ -71,10 +61,10 @@ function HandleCollision(colliderA, colliderB)
 
     local xHit =
         colliderAOffsetPositionX + distanceX > colliderBOffsetPositionX and
-        colliderAOffsetPositionX - distanceX < colliderBOffsetPositionX
+            colliderAOffsetPositionX - distanceX < colliderBOffsetPositionX
     local yHit =
         colliderAOffsetPositionY + distanceY > colliderBOffsetPositionY and
-        colliderAOffsetPositionY - distanceY < colliderBOffsetPositionY
+            colliderAOffsetPositionY - distanceY < colliderBOffsetPositionY
 
     local hit = xHit and yHit
     return hit
@@ -86,7 +76,8 @@ function BuildBackground(name, texture, positionZ)
     background:addComponent("TransformComponent")
     local backgroundTransform = background:getComponent("TransformComponent")
     backgroundTransform.position:set(0, 0, positionZ)
-    backgroundTransform.scale:set(parallaxConfig.backgroundWidth, parallaxConfig.backgroundHeight, 1)
+    backgroundTransform.scale:set(parallaxConfig.backgroundWidth,
+                                  parallaxConfig.backgroundHeight, 1)
 
     background:addComponent("RenderComponent")
     local backgroundRenderer = background:getComponent("RenderComponent")
@@ -115,7 +106,10 @@ end
 function BuildParallax(backgrounds)
     local builtBackgrounds = {}
     for _, value in pairs(backgrounds) do
-        local builtBackground = BuildParallaxBackground(value.name, value.sprite, value.scrollSpeed, value.positionZ)
+        local builtBackground = BuildParallaxBackground(value.name,
+                                                        value.sprite,
+                                                        value.scrollSpeed,
+                                                        value.positionZ)
         table.insert(builtBackgrounds, builtBackground)
     end
     return builtBackgrounds
@@ -123,12 +117,17 @@ end
 function ResetParallaxBackground(parallaxBackground)
     parallaxBackground.xMoved = 0.0
     parallaxBackground.backgroundA.transform.position:setX(0.0)
-    parallaxBackground.backgroundB.transform.position:setX(parallaxConfig.backgroundWidth)
+    parallaxBackground.backgroundB.transform.position:setX(
+        parallaxConfig.backgroundWidth)
 end
 function UpdateParallaxBackground(parallaxBackground, deltaTime)
-    parallaxBackground.xMoved = (parallaxBackground.xMoved + parallaxBackground.scrollSpeed * deltaTime) % 1.0
-    parallaxBackground.backgroundA.transform.position:setX(-parallaxBackground.xMoved * parallaxConfig.backgroundWidth)
-    parallaxBackground.backgroundB.transform.position:setX((-parallaxBackground.xMoved + 1) * parallaxConfig.backgroundWidth)
+    parallaxBackground.xMoved = (parallaxBackground.xMoved +
+                                    parallaxBackground.scrollSpeed * deltaTime) %
+                                    1.0
+    parallaxBackground.backgroundA.transform.position:setX(
+        -parallaxBackground.xMoved * parallaxConfig.backgroundWidth)
+    parallaxBackground.backgroundB.transform.position:setX(
+        (-parallaxBackground.xMoved + 1) * parallaxConfig.backgroundWidth)
 end
 function UpdateParallax(backgrounds, deltaTime)
     for _, value in ipairs(backgrounds) do
@@ -159,21 +158,19 @@ function MakePlayer()
     return player
 end
 function UpdatePlayer(player, deltaTime)
-    if Input:keyPressed("W") then
-		player.yVelocity = playerConfig.jumpPower
-	end
+    if Input:keyPressed("W") then player.yVelocity = playerConfig.jumpPower end
 
-    player.yPosition =
-        player.yPosition -
-        playerConfig.gravity * deltaTime +
-        player.yVelocity * deltaTime
+    player.yPosition = player.yPosition - playerConfig.gravity * deltaTime +
+                           player.yVelocity * deltaTime
 
-    player.yVelocity = math.max(player.yVelocity - playerConfig.velocityLoss * deltaTime, 0.0)
+    player.yVelocity = math.max(player.yVelocity - playerConfig.velocityLoss *
+                                    deltaTime, 0.0)
 
-    local playerDeltaY = player.yPosition - player.lastYPosition
+    local playerDeltaY = (player.yPosition - player.lastYPosition) / deltaTime
 
     player.transform.position:setY(player.yPosition)
-    player.transform.rotation:setZ(playerDeltaY * -playerConfig.velocityRotateAnimation)
+    player.transform.rotation:setZ(playerDeltaY *
+                                       -playerConfig.velocityRotateAnimation)
 
     player.lastYPosition = player.yPosition
 end
@@ -218,19 +215,26 @@ function UpdatePipeColumn(pipeColumn, deltaTime)
     pipeColumn.positionX = pipeColumn.positionX + pipeConfig.speed * deltaTime
     if pipeColumn.positionX > pipeConfig.xLoopBounds then
         pipeColumn.positionX = -pipeConfig.xLoopBounds
-        pipeColumn.positionY = (math.random() - 0.5) * 2.0 * pipeConfig.yRandomness
+        pipeColumn.positionY = (math.random() - 0.5) * 2.0 *
+                                   pipeConfig.yRandomness
     end
 
     -- Update the transforms
 
     local gapCenter = pipeConfig.gap * 0.5
 
-    pipeColumn.bottomPipe.transform.position:set(pipeColumn.positionX, pipeColumn.positionY + gapCenter, 0)
-    pipeColumn.topPipe.transform.position:set(pipeColumn.positionX, pipeColumn.positionY - gapCenter, 0)
+    pipeColumn.bottomPipe.transform.position:set(pipeColumn.positionX,
+                                                 pipeColumn.positionY +
+                                                     gapCenter, 0)
+    pipeColumn.topPipe.transform.position:set(pipeColumn.positionX,
+                                              pipeColumn.positionY - gapCenter,
+                                              0)
 end
 function PlayerHandlePipeColumnCollisions(player, pipeColumn)
-    local topPipeCollision = HandleCollision(player.collider, pipeColumn.topPipe.collider)
-    local bottomPipeCollision = HandleCollision(player.collider, pipeColumn.bottomPipe.collider)
+    local topPipeCollision = HandleCollision(player.collider,
+                                             pipeColumn.topPipe.collider)
+    local bottomPipeCollision = HandleCollision(player.collider,
+                                                pipeColumn.bottomPipe.collider)
     local hasCollision = topPipeCollision or bottomPipeCollision
     return hasCollision
 end
@@ -243,9 +247,7 @@ function ResetPipeColumn(pipeColumn)
     pipeColumn.positionY = 0
 end
 function ResetParallax(backgrounds)
-    for _, value in ipairs(backgrounds) do
-        ResetParallaxBackground(value)
-    end
+    for _, value in ipairs(backgrounds) do ResetParallaxBackground(value) end
 end
 function PlayerIsOutOfBounds(player)
     local isOverMap = player.yPosition > mapConfig.yBounds
@@ -264,7 +266,7 @@ function update(time)
     UpdateParallax(parallax, deltaTime)
     UpdatePlayer(player, deltaTime)
     UpdatePipeColumn(pipeColumn, deltaTime)
-    
+
     local hadCollision = PlayerHandlePipeColumnCollisions(player, pipeColumn)
     local isOutOfBounds = PlayerIsOutOfBounds(player)
     local hasLost = hadCollision or isOutOfBounds

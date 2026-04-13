@@ -24,8 +24,7 @@
     "background_layer_1": "Textures/background/layer_1.png",
     "background_layer_2": "Textures/background/layer_2.png",
     "background_layer_3": "Textures/background/layer_3.png",
-    "background_layer_4": "Textures/background/layer_4.png",
-    "background": "Textures/background.png"
+    "background_layer_4": "Textures/background/layer_4.png"
   },
 
   "audio": {
@@ -39,7 +38,7 @@
     {
       "name": "Game",
       "components": {
-        "script" : "Scripts/broken.lua"
+        "script" : "Scripts/main.lua"
       }
     }
   ]
