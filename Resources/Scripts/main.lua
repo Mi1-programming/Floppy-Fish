@@ -29,10 +29,10 @@ local parallaxConfig = {
             scrollSpeed = -0.1,
             positionZ = 4
         }, {
-            name = "aaaaa", -- PLEASE DON'T CHANGE THIS. THINGS WILL BREAK IF IT SAYS ANYTHING ELSE
+            name = "Background_layer_4",
             sprite = "background_layer_4",
             scrollSpeed = -0.35,
-            positionZ = 0
+            positionZ = -1
         }
     }
 }
